@@ -8,7 +8,7 @@
     
     <div class="videoHero__embed" style="padding:56.25% 0 0 0;position:relative">
       <div style="height:100%;left:0;position:absolute;top:0;width:100%">
-        <youtube v-show="breakpoint >= 2" :class="{'showVideo': videoReady}" class="youtubeWrapper" style="width:100%;height:100%" :video-id="heroVideoId" @ready="ready" player-width="100%" player-height="100%" :player-vars="playerVars"></youtube>
+        <youtube :class="{'showVideo': videoReady}" class="youtubeWrapper" style="width:100%;height:100%" :video-id="heroVideoId" @ready="ready" player-width="100%" player-height="100%" :player-vars="playerVars"></youtube>
         <transition name="fade-in" appear>
           <img :src="thumbnail.large.url">
         </transition>

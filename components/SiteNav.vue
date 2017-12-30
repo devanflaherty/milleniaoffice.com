@@ -34,7 +34,7 @@ export default {
     mobileNav
   },
   computed: {
-    ...mapGetters('layout', ['mobileNav', 'navVis', 'navigationMenu', 'breakpoint']),
+    ...mapGetters('layout', ['mobileNav', 'navVis', 'navigationMenu']),
     menu () {
       if (this.navigationMenu) {
         return this.navigationMenu.nav

@@ -141,7 +141,7 @@ export default {
   },
   computed: {
     fullName () {
-      return `${this.contact.firstName} ${this.contact.lastName}`
+      return this.contact.firstName + ' ' + this.contact.lastName
     },
     ...mapGetters('layout', ['themeSettings']),
     footer_title () {
@@ -172,7 +172,7 @@ export default {
         'name': this.fullName,
         'email': this.contact.email,
         'message': this.contact.message,
-        '_subject': `Contact from ${this.fullName}`
+        '_subject': 'Contact from' + this.fullName
       }).then(res => {
         this.sending = false
         this.sent = true

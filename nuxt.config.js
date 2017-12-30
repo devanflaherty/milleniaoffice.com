@@ -65,7 +65,8 @@ module.exports = {
     { src: `~mixins/utilities` },
     { src: `~plugins/vee-validate` },
     { src: `~plugins/slices` },
-    { src: `~plugins/prismic` }
+    { src: `~plugins/prismic` },
+    { src: `~plugins/axios` }
   ],
   router: {
     middleware: ['toggleNav'],

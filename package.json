@@ -16,7 +16,6 @@
     "@nuxtjs/pwa": "^2.0.4",
     "axios": "^0.16.x",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
     "bulma": "^0.6.1",
     "gsap": "^1.20.3",
     "js-cookie": "^2.2.0",
@@ -40,8 +39,8 @@
     "waypoints": "^4.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "eslint": "^4.6.1",
+    "babel-eslint": "^7.2.0",
+    "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-html": "^3.1.1",
@@ -52,6 +51,6 @@
     "nodemon": "^1.11.0"
   },
   "engines": {
-    "node": ">9.1.x"
+    "node": ">8.1.x"
   }
 }
