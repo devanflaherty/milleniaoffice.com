@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Add the css for the desired font, currently this document uses default sans-serif. -->
+	<link rel="stylesheet" href="css/mo-pano.css" type="text/css"/>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+</head>
+
+<body>
+
+<div id="pano-container">
+
+	<canvas id="pano-canvas" class="pano-full-size" touch-action="none"></canvas>
+	<div id="pano-hotspot-container" class="pano-full-size pano-non-interactive"></div>
+	<div id="pano-campus-container" class="pano-full-size pano-non-interactive"></div>
+	
+	<!-- Welcome GUI -->
+	<div id="pano-welcome-container" class="pano-full-size pano-non-interactive">
+		<div id="pano-welcome" class="pano-center-vh">	
+			<p id="pano-welcome-description"></p>		
+			<div id="pano-enter-button" class="pano-button pano-panel pano-bg-cyan">
+				<span>ENTER </span><img src="assets/gui/btn-360.png"/>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- Top GUI -->
+	<div id="pano-ui-overlay" class="pano-full-size pano-non-interactive">
+		<a id="pano-back-button" class="pano-button pano-panel pano-bg-silver">
+			<span class="pano-button-bg"></span>
+			<img class="pano-button-icon-left" src="assets/gui/btn-map.png" /><span>BACK</span>
+		</a>
+		<a id="pano-map-button" class="pano-button pano-panel pano-bg-silver">
+			<span class="pano-button-bg"></span>
+			<span>SHOW MAP</span>
+			<img class="pano-button-icon-left" src="assets/gui/btn-map.png" />
+		</a>
+		<a id="pano-gyro-button" class="pano-button pano-panel pano-bg-silver">
+			<span class="pano-button-bg"></span>
+			<span>AUTO-ROTATION:ON</span>
+		</a>
+
+
+		<div id="pano-map" class="pano-interactive">
+			<div id="pano-map-view"></div>
+		</div>
+
+		<div id="pano-message" class="pano-bg-white pano-panel pano-center-vh">
+			<p> </p>
+			<a id="pano-message-button" class="pano-button pano-panel pano-bg-cyan">
+				<span class="pano-button-bg"></span>
+				<img class="pano-button-icon-left" src="assets/gui/btn-close.png"/><span>CLOSE</span> 
+			</a>
+		</div>
+
+		<a id="pano-fullscreen-button" class="pano-button pano-panel pano-bg-black">
+			<span class="pano-button-bg"></span>
+			<img class="pano-button-icon-left" src="assets/gui/btn-fullscreen.png"/>
+		</a>
+	</div> <!-- pano ui overlay -->
+	<div id="progress-bar-container" class="pano-bg-grey pano-panel">
+		<span>LOADING PANO</span><br>
+		<img src="assets/gui/loader-spin-line.gif"/>
+		<!-- <div id="progress-bar-bg" class="pano-bg-black"><div id="progress-bar"  class="pano-bg-silver"></div></div> -->
+	</div>
+	
+
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/pep.js"></script>
+<script src="js/babylon.2.5.js" type="text/javascript"></script>
+<script src="js/screenfull.min.js" type="text/javascript"></script>
+<script src="assets/panos/_pano-data.js" type="text/javascript"></script>"
+<script src="js/mil-pano.js" type="text/javascript"></script>
+
+</body>
+</html>

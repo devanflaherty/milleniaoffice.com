@@ -1,0 +1,44 @@
+h2, h2.title {
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 300;
+  position: relative;
+  color: #20242c;
+  @include mobile() {
+    font-size: 3.5rem;
+  }
+}
+
+p.large-type {
+  @include largeType();
+}
+
+.rich-text {
+  h3 {
+    @include largeType();
+    margin-bottom: 1.5rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+    font-weight: $weight-normal;
+    margin-bottom: 1.25rem;
+    strong {
+      font-weight: $weight-medium;
+    }
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: $weight-medium;
+    strong {
+      font-weight: $weight-bold;
+    }
+  }
+  p {
+    margin-bottom: 1.25rem;
+  }
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-left: 0;
+  }
+}

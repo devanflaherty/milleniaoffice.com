@@ -1,0 +1,362 @@
+
+
+
+.________temp_fonts {}
+/* 
+
+@font-face {
+	font-family: 'Circular Std';
+	src: url('../assets/fonts/subset-CircularStd-Medium.eot');
+	src: url('../assets/fonts/subset-CircularStd-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../assets/fonts/subset-CircularStd-Medium.woff') format('woff'),
+		url('../assets/fonts/subset-CircularStd-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+} */
+
+
+
+.________type {}
+
+
+
+html, body {
+	background-color:white;
+	width:100%; height:100%;
+	font-family: sans-serif;
+	padding:0; margin:0;
+}
+
+.pano-container h3, .pano-container h2 {
+	font-weight:normal;
+	color:red;
+
+}
+
+
+
+.________colors {}
+
+.pano-bg-blue {
+	background-color: rgb(188, 218, 231);
+	color: rgb(52, 58, 67);
+}
+
+.pano-bg-white {
+	background-color: #FFF;
+	color: rgb(52, 58, 67);
+}
+
+.pano-bg-silver {
+	background-color: rgb(240, 242, 243);
+	color: rgb(52, 58, 67);
+}
+
+.pano-bg-cyan {
+	background-color:rgb(188, 218, 231);
+	color: rgb(52, 58, 67);
+}
+
+.pano-bg-grey {
+	background-color:rgb(160, 168, 175);
+	color: rgb(52, 58, 67);
+}
+
+.pano-bg-black {
+	background-color: rgb(52, 58, 67);
+	color: rgb(240, 242, 243);
+}
+
+
+.________top-level-container{}
+
+
+/*
+Ideally let pano-container be in a full window width div so it can expand.
+*/
+
+#pano-container {
+	position: absolute;
+	width:100%; height:100%;
+	top:0; left:0; right:0; bottom:0;
+	margin:0px auto 0px;
+	background-color:black;
+	overflow: hidden;
+	/* font-family: 'Circular Std', sans-serif; */
+	font-size:11px;
+}
+
+@media (max-width:752px) {
+	#pano-container {
+		width:100%;
+	}
+}
+
+#pano-container *, #pano-container *:before, #pano-container *:after {
+  box-sizing: border-box;
+}
+
+#pano-container *:focus {
+	outline: none;
+}
+
+.________common{}
+
+.pano-full-size {
+	position:absolute;
+	width:100%; height:100%;
+	top:0; left:0; right:0; bottom:0;
+}
+
+.pano-non-interactive {
+	touch-action: none;
+	pointer-events: none;
+	user-select: none;
+	-webkit-user-select: none;     
+	-moz-user-select: none;
+	-ms-user-select: none 
+}
+
+.pano-interactive {
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.pano-center-v {
+	position:absolute; top:50%;
+	transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-webkit-transform:translateY(-50%);
+}
+
+.pano-center-vh {
+	position:absolute; top:50%; left:50%;
+	transform:translate(-50%, -50%);
+	-moz-transform:translate(-50%, -50%);
+	-webkit-transform:translate(-50%, -50%);
+}
+
+.pano-text-left {
+	text-align: left;
+}
+
+.________ui_elements{}
+
+.pano-panel {
+	position:relative;
+	padding:1em 1em;
+	margin:2px;
+	border-radius: 2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+}
+
+.pano-button {
+	display:inline-block;
+	cursor: pointer;
+	pointer-events: auto;
+	text-align: center;
+}
+
+.pano-button-size-m {
+	width:12em;
+}
+
+.pano-button-bg {
+	margin:0 !important;
+	position:absolute;
+	left:0; top:0;
+	display:none;
+	width:100%; height:100%;
+	background-color:rgba(0, 0, 0, .25);
+}
+
+.pano-button > span:not(.pano-button-bg) {
+	display:inline-block;
+	margin:4px 4px;
+}
+
+.pano-button > img {
+	display:inline;
+	width:2em; height:2em;
+	vertical-align: middle;
+	margin:-2px 4px 0 4px;
+}
+
+.pano-button:hover .pano-button-bg {
+	display:block;
+}
+
+#pano-back-button {
+	position:absolute;
+	left:10px; top:10px;
+}
+#pano-ui-overlay {
+	position:absolute;
+	padding:10px;
+	text-align: right;
+}
+
+#pano-map {
+	position:absolute;
+	top:10px; right:10px;
+	width:25em; max-width: calc(100% - 20px);
+	height:17em;
+	background-image: url('../assets/gui/plan.jpg');
+	background-size: 100% 100%;
+	overflow: hidden;
+	z-index:10;
+	border:1px solid rgb(240, 242, 243);
+	border-radius: 2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+}
+
+#pano-map-view {
+	position:absolute;
+	top:35%; left:25%;
+	width:128px; height:128px;
+
+	background-image: url('../assets/gui/plan-viewpoint.png');
+	background-size:100% 100%;
+
+	transform-origin: 			10% 50%;
+	-moz-transform-origin:  	10% 50%;
+	-ms-transform-origin: 		10% 50%;
+	-webkit-transform-origin:   10% 50%;
+
+	transition:  top 500ms, left 500ms;
+	-webkit-transition:  top 500ms, left 500ms;
+	-moz-transition:  top 500ms, left 500ms;
+	-ms-transition:  top 500ms, left 500ms;
+}
+
+#pano-message {
+	display:none;
+	font-size:1.25em;
+	width:20em; max-width: 300px;
+	text-align: center;
+}
+
+#pano-message-button {
+	font-size:.8em;
+	display:inline-block;
+	margin:0 auto 0;
+}
+.________hotspots{}
+
+.pano-hotspot {
+	position:absolute; 
+}
+
+.pano-hotspot img {
+	display:block;
+	margin:0 auto 0;
+	width:32px; height:32px;
+	cursor:pointer;
+}
+
+.pano-hotspot:hover img {
+	margin:2px auto 2px;
+	width:28px; height:28px;
+}
+
+.pano-hotspot > span {
+	-webkit-font-smoothing: antialiased;
+	display:block;
+	clear:both;
+	text-align: center;
+	white-space: nowrap;
+	text-rendering:optimizeLegibility;
+	text-transform: uppercase;
+	padding:.5em;
+	border-radius: 2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+}
+
+#pano-fullscreen-button {
+	position: absolute;
+	bottom:10px; right:10px;
+}
+
+/* Initial state: hide */
+#pano-welcome-container, #pano-ui-overlay {
+	display:none
+}
+
+
+.________welcome{}
+
+#pano-welcome-container {
+	color:#FFF;
+	background-color:rgba(52, 58, 67, .75);
+	font-size:1.25em;
+}
+
+#pano-welcome {
+	position:absolute;
+	top:50%; left:50%;
+	width:80%; max-width: 480px;
+	text-align: center;
+	padding-top:3em;
+}
+
+
+_______progress_bar________{}
+
+#progress-bar-container {
+	display:none;
+	position:absolute;
+	left:50%; bottom:50%;
+	width:13em; height:auto;
+	/* padding:1em; */
+	text-align: center;
+	margin-left:-6.5em;
+	border-radius: 2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+}
+
+#progress-bar-bg {
+	width:100%; height:10px; margin-top:6px;
+	/* background-color: rgba(255, 255, 255, .5); */
+}
+
+#progress-bar {
+	width:50%; height:100%;
+	/* background-color: #FFF; */
+}
+
+#progress-bar-container img {
+	margin-top:10px;
+	width:32px; height:32px;
+}
+
+.________campus{}
+
+
+.pano-campus {
+	position:absolute;
+	width:15em;
+}
+
+.pano-campus-logo, .pano-campus > div, .pano-campus > a {
+	display:block;
+	position:relative;
+	width:calc(100% - 4px);
+	height:auto;
+}
+
+
+.pano-campus h3 {
+	display:inline-block;
+	/* font-family: 'Circular Std'; */
+	font-size:1.75em;
+	font-weight: normal;
+	margin:0px;
+	width:auto;
+}
+
+
+
