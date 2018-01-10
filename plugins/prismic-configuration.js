@@ -5,19 +5,23 @@ export default {
   apiEndpoint: 'https://millenia.cdn.prismic.io/api/v2',
   accessToken: 'MC5XandlY3lzQUFLWExvR3FJ.77-977-9MUjvv73vv73vv710JFPvv73vv73vv73vv71PPRvvv70r77-977-9J--_ve-_ve-_ve-_vXTvv73vv73vv70d77-9',
 
-  linkResolver (doc, link) {
+  linkResolver (doc) {
     // Define the url depending on the document type
-    if (doc.type === 'work_posts') {
-      return '/work/' + doc.uid
-    } else if (doc.type === 'blog_posts') {
-      return '/blog/' + doc.uid
-    } else if (doc.type === 'pages') {
-      return '/' + doc.uid
-    } else if (doc.type === 'home') {
-      return '/'
-    } else {
-      return '/'
+    if (doc.type === 'home') return '/'
+    if (doc.type === 'pages') {
+      // Find the campus tag
+      let campus = doc.tags.find((tag) => {
+        return tag === 'campus'
+      })
+
+      // if it exists
+      if (campus) { 
+        return '/campus/' + doc.uid
+      } else {
+        return '/' + doc.uid
+      }
     }
+    return '/' + doc.uid
   },
   htmlSerializer (element, content, children) {
     switch (element.type) {

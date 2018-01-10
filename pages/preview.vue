@@ -19,6 +19,9 @@ export default {
   mounted () {
     this.$prismic.initApi().then((ctx) => {
       ctx.api.previewSession(this.token, ctx.linkResolver, '/').then((url) => {
+        if (Cookies.get(Prismic.previewCookie)) {
+          Cookies.remove(Prismic.previewCookie)
+        }
         Cookies.set(Prismic.previewCookie, this.token, { expires: PREVIEW_EXPIRES })
         this.$router.push(url)
       })

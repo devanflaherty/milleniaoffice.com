@@ -1,6 +1,6 @@
 <template>
   <article class="hero is-small slice__banner" v-if="banner.banner_image.large.url">
-    <div class="separator slice__banner__separator">
+    <div v-if="banner.banner_title.length > 0" class="separator slice__banner__separator">
       <svg class="seperator" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#f9f9f9" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
     </div>
 

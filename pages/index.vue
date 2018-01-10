@@ -8,7 +8,7 @@
   </article>
   <!-- Repeatable Slices -->
   <component v-for="(slice, index) in home.slices" :key="index" 
-    :slice="slice"  :is="toCamelCase(slice.slice_type)"></component>
+    :slice="slice" :is="toCamelCase(slice.slice_type)" :id="`${slice.slice_type}-${index}`"></component>
   
   <!-- Campus Selector -->
   <campusSelector :selector="home.campus_selector" />

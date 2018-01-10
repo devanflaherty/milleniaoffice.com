@@ -199,8 +199,9 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/mixins';
 .footer {
-  background: white;
+  background: none;
   padding: 0;
+  position: relative;
   .seperator {
     margin-bottom: -8px;
   }

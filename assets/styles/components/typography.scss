@@ -41,4 +41,7 @@ p.large-type {
     list-style-position: inside;
     margin-left: 0;
   }
+  a {
+    color: darken($primary, 10%);
+  }
 }

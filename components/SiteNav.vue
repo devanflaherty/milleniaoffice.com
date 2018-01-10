@@ -14,9 +14,14 @@
     <transition name="nav-in" appear>
       <div id="navMenu" class="navbar-menu" v-if="breakpoint >= 3 && navVis">
         <div class="navbar-end" v-if="mobileNav || breakpoint > 2">
-          <nuxt-link class="navbar-item" :to="$prismic.asLink(link.primary.link)" v-for="(link, index) in menu" :key="index" v-if="menu">
-            {{$prismic.asText(link.primary.label)}}
-          </nuxt-link>
+          <div class="navbar-item" v-for="(link, index) in menu" :key="index" v-if="menu">
+            <nuxt-link :to="navLink(link)" v-if="link.primary.link.type">
+              {{$prismic.asText(link.primary.label)}}
+            </nuxt-link>
+            <a href="#" v-else>
+              {{$prismic.asText(link.primary.label)}}
+            </a>
+          </div>
         </div>
       </div>
     </transition>
@@ -51,8 +56,12 @@ export default {
     }
   },
   methods: {
+    navLink (link) {
+      let url = this.$prismic.asLink(link.primary.link)
+      let anchor = link.primary.anchor ? link.primary.anchor : ''
+      return url + anchor
+    },
     showMobileNav () {
-      console.log('show')
       this.$store.dispatch('layout/toggleMobileNav', !this.mobileNav)
     },
     disableScroll (bool) {
@@ -109,29 +118,31 @@ export default {
     }
     .navbar-item {
       height: 100%;
-      color: $black;
-      font-size: 1rem;
       position: relative;
       padding-left: 0;
       padding-right: 0;
-      margin: 0 1rem; 
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        display: block;
-        height: 2px;
-        background: transparent;
-        width: 0;
-        transition: all 0.5s ease;
-      }
-      &:hover {
+      margin: 0 1rem;
+      a {
+        color: $black;
+        font-size: 1rem;
         &:after {
-          background: $primary;
-          width: 100%;
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          display: block;
+          height: 2px;
+          background: transparent;
+          width: 0;
+          transition: all 0.5s ease;
+        }
+        &:hover {
+          &:after {
+            background: darken($primary, 20%);
+            width: 100%;
+          }
         }
       }
     }
