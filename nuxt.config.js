@@ -90,23 +90,24 @@ module.exports = {
   */
   build: {
     vendor: ['axios', 'sweet-scroll', 'scrollreveal', 'vue-youtube-embed'],
+    postcss: {
+      plugins: {
+        'postcss-cssnext': {
+          features: {
+            customProperties: false
+          }
+        }
+      }
+    },
     extend (config, ctx) {
-      if (ctx.isClient) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-      config.module.rules.push({
-        test: /\.js$/,
-        exclude: [/(node_modules|bower_components)(?![/|\\](swiper))/] 
-      })
-    },
-    postcss: {
-      plugins: {
-        'postcss-custom-properties': false
       }
     }
   }

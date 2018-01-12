@@ -27,9 +27,9 @@
 
 <script>
 import subNav from '~/components/subNav'
-if (process.client) {
-  let Rellax = require('rellax') // eslint-disable-line
-}
+// if (process.client) {
+//   let Rellax = require('rellax') // eslint-disable-line
+// }
 
 export default {
   name: 'Page',
@@ -64,8 +64,6 @@ export default {
           document: res,
           entry: res.data
         }
-      }).catch(err => {
-        console.error(err)
       })
     }).catch(err => {
       console.error(err)
@@ -117,7 +115,7 @@ export default {
         ctx.toolbar()
       })
 
-      let rellax = new Rellax('.rellax') // eslint-disable-line
+      // let rellax = new Rellax('.rellax') // eslint-disable-line
     }
   }
 }

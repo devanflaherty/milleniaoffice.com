@@ -51,9 +51,9 @@
 
 <script>
 import {mapGetters} from 'vuex'
-if (process.client) {
-  let Rellax = require('rellax') // eslint-disable-line
-}
+// if (process.client) {
+//   let Rellax = require('rellax') // eslint-disable-line
+// }
 
 export default {
   head () {
@@ -100,7 +100,7 @@ export default {
         ctx.toolbar()
       })
 
-      let rellax = new Rellax('.rellax') // eslint-disable-line
+      // let rellax = new Rellax('.rellax') // eslint-disable-line
     }
   }
 }
