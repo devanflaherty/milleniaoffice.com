@@ -51,7 +51,6 @@
 
 <script>
 import {mapGetters} from 'vuex'
-// let Rellax = require('rellax')
 
 export default {
   head () {

@@ -29,7 +29,6 @@
 
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
-// let Rellax = require('rellax')
 
 export default {
   props: ['url', 'thumbnail', 'body'],

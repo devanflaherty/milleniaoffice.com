@@ -26,7 +26,6 @@
 </template>
 
 <script>
-// let Rellax = require('rellax')
 import subNav from '~/components/subNav'
 
 export default {
