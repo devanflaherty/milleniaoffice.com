@@ -30,7 +30,7 @@
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
 if (process.client) {
-  let Rellax = require('rellax')
+  let Rellax = require('rellax') // eslint-disable-line
 }
 
 export default {

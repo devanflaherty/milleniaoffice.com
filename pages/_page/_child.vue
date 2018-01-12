@@ -27,6 +27,9 @@
 
 <script>
 import subNav from '~/components/subNav'
+if (process.client) {
+  let Rellax = require('rellax') // eslint-disable-line
+}
 
 export default {
   name: 'Child',
@@ -119,7 +122,7 @@ export default {
       })
     }
 
-    this.$rellax('.rellax')
+    let rellax = new Rellax('.rellax') // eslint-disable-line
   }
 }
 </script>
