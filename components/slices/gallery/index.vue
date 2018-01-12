@@ -47,13 +47,13 @@ export default {
         },
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-prev'
         },
         pagination: {
           el: '.swiper-pagination',
           type: 'bullets',
           clickable: true
-        },
+        }
         // on: {
         //   slideChange: (swiper) => {
         //     this.activeSlide = this.$refs.mySwiper.swiper.realIndex
@@ -65,13 +65,13 @@ export default {
   computed: {
     pagination () {
       return {
-        true: this.gallery.dot_pagination === 'Yes', 
+        true: this.gallery.dot_pagination === 'Yes',
         false: this.gallery.dot_pagination === 'No'
       }
     },
     arrows () {
       return {
-        true: this.gallery.arrow_navigation === 'Yes', 
+        true: this.gallery.arrow_navigation === 'Yes',
         false: this.gallery.arrow_navigation === 'No'
       }
     }
@@ -95,7 +95,7 @@ export default {
     playSlider () {
       this.$refs.mySwiper.swiper.autoplay.start()
     },
-    readyPlayer: async function() {
+    readyPlayer: async function () {
       if (this.$refs.mySwiper) {
         return true
       }
@@ -119,7 +119,9 @@ export default {
     })
   },
   beforeDestroy () {
-    this.$refs.mySwiper.swiper.destroy()
+    if (this.$refs.mySwiper && this.$refs.mySwiper.swiper) {
+      this.$refs.mySwiper.swiper.destroy()
+    }
   }
 }
 </script>

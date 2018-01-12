@@ -29,7 +29,7 @@
 
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
-let Rellax = require('rellax')
+// let Rellax = require('rellax')
 
 export default {
   props: ['url', 'thumbnail', 'body'],
@@ -43,7 +43,7 @@ export default {
       if (this.url) return getIdFromURL(this.url)
       return null
     },
-    playerVars() {
+    playerVars () {
       let vid = ''
       if (this.url) {
         vid = getIdFromURL(this.url)
@@ -71,7 +71,7 @@ export default {
     }
   },
   mounted () {
-    let rellax = new Rellax('.rellax')
+    this.$rellax('.rellax')
   }
 }
 </script>

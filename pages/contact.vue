@@ -51,7 +51,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-let Rellax = require('rellax')
+// let Rellax = require('rellax')
 
 export default {
   head () {
@@ -98,7 +98,7 @@ export default {
         ctx.toolbar()
       })
 
-      let rellax = new Rellax('.rellax')
+      this.$rellax('.rellax')
     }
   }
 }

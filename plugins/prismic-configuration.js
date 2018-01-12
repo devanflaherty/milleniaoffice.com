@@ -15,7 +15,7 @@ export default {
       })
 
       // if it exists
-      if (campus) { 
+      if (campus) {
         return '/campus/' + doc.uid
       } else {
         return '/' + doc.uid

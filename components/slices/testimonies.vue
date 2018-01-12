@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {TimelineMax} from 'gsap'
+import {TimelineMax, TweenMax} from 'gsap'
 
 export default {
   props: ['quotes'],
@@ -80,11 +80,11 @@ export default {
             sizeQuote()
           })
 
-          const sizeQuote = () => {
-            TweenMax.to(block, 0.25, {
-              height: quote.offsetHeight + author.offsetHeight
-            })
-          }
+        const sizeQuote = () => {
+          TweenMax.to(block, 0.25, {
+            height: quote.offsetHeight + author.offsetHeight
+          })
+        }
       }
       if (dir === 'next') {
         anime(200)

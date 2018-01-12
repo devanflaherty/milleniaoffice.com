@@ -52,6 +52,7 @@ module.exports = {
     // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
   plugins: [
+    { src: `~plugins/rellax`, ssr: false },
     { src: `~plugins/vue-lazyload`, ssr: false },
     { src: `~plugins/vue-youtube-embed`, ssr: false },
     { src: `~plugins/vue-sweet-scroll`, ssr: false },
@@ -79,7 +80,7 @@ module.exports = {
         if (to.hash) {
           // let hash = this.$route.hash
           // this.scrollTo(hash, 100)
-          // position = { selector: to.hash }
+          position = { selector: to.hash }
         }
         return position
       }
@@ -90,6 +91,20 @@ module.exports = {
   */
   build: {
     vendor: ['axios', 'sweet-scroll', 'scrollreveal', 'vue-youtube-embed'],
+    extend (config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+      config.module.rules.push({
+        test: /\.js$/,
+        exclude: [/(node_modules|bower_components)(?![/|\\](swiper))/] 
+      })
+    },
     postcss: {
       plugins: {
         'postcss-custom-properties': false

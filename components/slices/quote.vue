@@ -25,7 +25,7 @@ export default {
         'has-text-left': this.quote.alignment === 'Left',
         'has-text-centered': this.quote.alignment === 'Center',
         'has-text-right': this.quote.alignment === 'Right'
-      } 
+      }
     }
   }
 }

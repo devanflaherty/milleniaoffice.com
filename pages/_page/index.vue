@@ -26,7 +26,6 @@
 </template>
 
 <script>
-let Rellax = require('rellax')
 import subNav from '~/components/subNav'
 
 export default {
@@ -62,6 +61,8 @@ export default {
           document: res,
           entry: res.data
         }
+      }).catch(err => {
+        console.error(err)
       })
     }).catch(err => {
       console.error(err)
@@ -113,7 +114,7 @@ export default {
         ctx.toolbar()
       })
 
-      let rellax = new Rellax('.rellax')
+      this.$rellax('.rellax')
     }
   }
 }
