@@ -52,7 +52,7 @@
 <script>
 import {mapGetters} from 'vuex'
 if (process.client) {
-  let Rellax = require('rellax')
+  let Rellax = require('rellax') // eslint-disable-line
 }
 
 export default {
