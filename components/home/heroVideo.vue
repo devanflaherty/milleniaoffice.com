@@ -29,6 +29,9 @@
 
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
+if (process.client) {
+  let Rellax = require('rellax')
+}
 
 export default {
   props: ['url', 'thumbnail', 'body'],
@@ -70,7 +73,7 @@ export default {
     }
   },
   mounted () {
-    this.$rellax('.rellax')
+    let rellax = new Rellax('.rellax') // eslint-disable-line
   }
 }
 </script>
