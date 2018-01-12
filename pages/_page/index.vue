@@ -1,20 +1,39 @@
 <template>
   <section class="page">
-    <header class="section page__header">
-      <div class="container">
-        <h2>{{$prismic.asText(entry.title)}}</h2>
+    <header class="section page__header" appear>
+      <transition name="fade-in">
+        <div class="page__header__image rellax" v-if="entry.hero_image.url" :style="`background-image: url(${entry.hero_image.large.url}) `"
+          data-rellax-speed="-4" data-rellax-percentage="0.5"></div>
+      </transition>
+      <div class="container rellax" data-rellax-speed="-2" data-rellax-percentage="0.5">
+        <h2>{{$prismic.asText(entry.title)}}
+        </h2>
+        <div class="rich-text has-text-white" v-html="$prismic.asHtml(entry.description)"></div>
+      </div>
+      <div class="page__header__separator">
+        <svg class="page__header__separator__polygon" xmlns="http://www.w3.org/2000/svg" version="1.1" :fill="polygonFill" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
       </div>
     </header>
 
+    <subNav :items="entry.sub_nav" v-if="subnav" />
+
     <!-- Repeatable Slices -->
-    <component v-for="(slice, index) in entry.slices" :key="index" 
+    <component v-for="(slice, index) in entry.slices" 
+      :id="`${toCamelCase(slice.slice_type)}__${index + 1}`"
+      :key="index" 
       :slice="slice" :position="index + 1" :total="entry.slices.length" :is="toCamelCase(slice.slice_type)"></component>
   </section>
 </template>
 
 <script>
+let Rellax = require('rellax')
+import subNav from '~/components/subNav'
+
 export default {
   name: 'Page',
+  components: {
+    subNav
+  },
   head () {
     return {
       title: this.seoTitle,
@@ -52,6 +71,20 @@ export default {
     })
   },
   computed: {
+    subnav () {
+      if (this.entry.sub_nav[0].label === null) {
+        return false
+      } else {
+        return true
+      }
+    },
+    polygonFill () {
+      if (!this.subnav) {
+        return '#fff'
+      } else {
+        return 'rgb(240,240,240)'
+      }
+    },
     seoTitle () {
       if (this.entry.meta_title > 0) {
         return this.entry.meta_title
@@ -79,13 +112,12 @@ export default {
       this.$prismic.initApi().then((ctx) => {
         ctx.toolbar()
       })
+
+      let rellax = new Rellax('.rellax')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.page {
-  margin-top: 100px;
-}
 </style>

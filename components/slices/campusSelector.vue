@@ -109,7 +109,6 @@ export default {
   },
   mounted () {
     this.$reveal('.slice__campusSelector__nav__campus__link', { duration: 2000 }, 100)
-    console.log(this.activeCampus)
   }
 }
 </script>
@@ -159,6 +158,9 @@ export default {
           line-height: 1.5;
           strong {
             font-weight: $weight-medium;
+          }
+          @include mobile () {
+            @include mediumType();
           }
         }
         .button {

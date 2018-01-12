@@ -1,12 +1,12 @@
 <template>
-  <article class="section slice__columnedContent" :class="{'slice__columnedContent--push-top': headline.length > 0}">
+  <article class="section slice__columnedContent">
     <div class="container">
       <h2 v-if="headline.length > 0" class="slice__columnedContent__headline has-text-primary">{{$prismic.asText(headline)}}</h2>
       
       <div class="columns" :class="align">
         <div class="column slice__columnedContent__column" :class="[offset(column.offset), layout(column.layout)]" v-for="(column, index) in slice.items" :key="index"
           v-scroll-reveal="{duration: 2000, scale: 0, distance: '60px', delay: index * 250}">
-          <div v-if="column.content_body.length > 0" class="content-body rich-text" v-html="$prismic.asHtml(column.content_body)"></div>
+          <div v-if="column.content_body.length > 0" class="content-body rich-text" :class="textSize(column.p_text_size)" v-html="$prismic.asHtml(column.content_body)"></div>
           <gallery :galleryID="column.gallery.id" v-if="column.gallery.id" />
         </div>
       </div>
@@ -43,6 +43,13 @@ export default {
       } else {
         return ''
       }
+    },
+    textSize (size) {
+      return {
+        'normal-type': size === 'Normal',
+        'medium-type': size === 'Medium',
+        'largetype': size === 'Large'
+      }
     }
   }
 }
@@ -53,7 +60,10 @@ export default {
 .slice {
   &__columnedContent {
     &--push-top {
-      margin-top: 4rem;
+      margin-top: 0;
+      @include mobile () {
+        margin-top: 0;
+      }
     }
     &__headline {
       margin-bottom: 2rem;
@@ -63,7 +73,7 @@ export default {
 
 .column {
   @include mobile() {
-    padding: 2rem;
+    padding: 1rem;
   }
 }
 .flex-align {

@@ -1,20 +1,39 @@
 <template>
   <section class="page">
     <header class="section page__header">
+      <transition name="fade-in">
+        <div class="page__header__image rellax" v-if="child.hero_image.url" :style="`background-image: url(${entry.hero_image.large.url}) `"
+          data-rellax-speed="-4" data-rellax-percentage="0.5"></div>
+      </transition>
       <div class="container">
-        <h2>{{$prismic.asText(child.title)}}</h2>
+        <h2 class="rellax"
+          data-rellax-speed="-2" data-rellax-percentage="0.5"
+          >{{$prismic.asText(child.title)}}
+        </h2>
+        <div class="rich-text rellax" v-html="$prismic.asHtml(child.description)"
+          data-rellax-speed="-2" data-rellax-percentage="0.5"></div>
+      </div>
+      <div class="page__header__separator">
+        <svg class="page__header__separator__polygon" xmlns="http://www.w3.org/2000/svg" version="1.1" :fill="polygonFill" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
       </div>
     </header>
+    <subNav :items="child.sub_nav" v-if="subnav" />
 
     <!-- Repeatable Slices -->
     <component v-for="(slice, index) in child.slices" :key="index" 
-      :slice="slice" :position="index + 1" :total="entry.slices.length" :is="toCamelCase(slice.slice_type)"></component>
+      :slice="slice" :position="index + 1" :total="child.slices.length" :is="toCamelCase(slice.slice_type)"></component>
   </section>
 </template>
 
 <script>
+let Rellax = require('rellax')
+import subNav from '~/components/subNav'
+
 export default {
   name: 'Child',
+  components: {
+    subNav
+  },
   head () {
     return {
       title: this.seoTitle,
@@ -58,6 +77,20 @@ export default {
     })
   },
   computed: {
+    subnav () {
+      if (this.child.sub_nav[0].label === null) {
+        return false
+      } else {
+        return true
+      }
+    },
+    polygonFill () {
+      if (!this.subnav) {
+        return '#fff'
+      } else {
+        return 'rgb(240,240,240)'
+      }
+    },
     seoTitle () {
       if (this.child.meta_title > 0) {
         return this.child.meta_title
@@ -86,12 +119,11 @@ export default {
         ctx.toolbar()
       })
     }
+    
+    let rellax = new Rellax('.rellax')
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.page {
-  margin-top: 100px;
-}
 </style>

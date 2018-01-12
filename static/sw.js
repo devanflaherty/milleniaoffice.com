@@ -8,36 +8,40 @@ const workboxSW = new self.WorkboxSW({
 
 workboxSW.precache([
   {
-    "url": "/_nuxt/app.77c6f7666fa5e78f398e.js",
-    "revision": "78cd22aff647769630b18a5bb9641cdb"
+    "url": "/_nuxt/app.552b00614645fd6a7a8c.js",
+    "revision": "504775d73058f5a7fc6d51b0dfa74722"
   },
   {
-    "url": "/_nuxt/common.61149a7d1afb8aa7ba6b.js",
-    "revision": "2aebf3b38a840184694a40d08090cbb2"
+    "url": "/_nuxt/layouts/default.57a9aaa26957317a7b23.js",
+    "revision": "2370866127075e57d806887bb2a4aacb"
   },
   {
-    "url": "/_nuxt/layouts/default.8f1936cdfa84f8b16845.js",
-    "revision": "9020a2d8bacd195f4656544db88b1690"
+    "url": "/_nuxt/manifest.80956d5b01e76c4684c8.js",
+    "revision": "fd420895bd851cff480c037c3b795b2c"
   },
   {
-    "url": "/_nuxt/manifest.8720bda2471fa1f99c5f.js",
-    "revision": "ad19f2b5a4f1c3a5354f4719477e6a13"
+    "url": "/_nuxt/pages/_page/_child.46745fa0917f2ee812f5.js",
+    "revision": "37090b920392344f201a3428e51960fb"
   },
   {
-    "url": "/_nuxt/pages/_page_slug.598ba5f7acb6c06e04d4.js",
-    "revision": "5e91ff9a290ba53500cddde4e35fc05f"
+    "url": "/_nuxt/pages/_page/index.aa50c8b3baa568c2b660.js",
+    "revision": "1e74fc4d3f6a057abb14700f5699366d"
   },
   {
-    "url": "/_nuxt/pages/contact.76c02affd0c2098f7090.js",
-    "revision": "41b173b5142c0ee9dc98f1a35e0f127a"
+    "url": "/_nuxt/pages/contact.b0c169d5c6d808be989c.js",
+    "revision": "62ea64314bb2d067554e3e0a2dfbebaa"
   },
   {
-    "url": "/_nuxt/pages/index.27bbdbb42e1ca0710d16.js",
-    "revision": "fc174524a7ef73242bad58b8d5c51755"
+    "url": "/_nuxt/pages/index.6d98ba4d925667192e69.js",
+    "revision": "c7d9004d6ae199f5c869f11ea4f212f2"
   },
   {
-    "url": "/_nuxt/pages/preview.76a759f2f2d28771fd0e.js",
-    "revision": "3378259c0ae9fb891ada4e414ed78974"
+    "url": "/_nuxt/pages/preview.b123f3d34b16c1ed80c2.js",
+    "revision": "75c9b648e3c1b3aae08a2865a7b7efcc"
+  },
+  {
+    "url": "/_nuxt/vendor.f3ea4bb1e0b0c0ce10d6.js",
+    "revision": "be3748836241f0998fd071b37c29e4b4"
   }
 ])
 

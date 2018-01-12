@@ -76,6 +76,11 @@ export default {
       }
     }
   },
+  watch: {
+    images () {
+      this.initSwiper()
+    }
+  },
   methods: {
     reveal () {
       this.hidden = false
@@ -108,7 +113,6 @@ export default {
       ctx.api.getByID(this.galleryID).then((res) => {
         this.gallery = res.data
         this.images = res.data.images
-        this.initSwiper()
       })
     }).catch(err => {
       console.error(err)

@@ -1,37 +1,54 @@
 <template>
-  <section id="videoHero">
-    <div class="videoHero__overlay is-hidden-mobile">
+  <section id="homeHero">
+    <div class="homeHero__overlay">
       <div class="container">
-        <div v-if="videoReady" v-html="$prismic.asHtml(body)" v-scroll-reveal="{scale: 1, distance: '100px', origin: 'left'}"></div>
+        <div v-html="$prismic.asHtml(body)" v-scroll-reveal="{scale: 1, distance: '100px', origin: 'left'}"></div>
       </div>
     </div>
     
-    <div class="videoHero__embed" style="padding:56.25% 0 0 0;position:relative">
+    <div class="homeHero__embed" style="padding:56.25% 0 0 0;position:relative" v-if="heroVideoId">
       <div style="height:100%;left:0;position:absolute;top:0;width:100%">
         <youtube :class="{'showVideo': videoReady}" class="youtubeWrapper" style="width:100%;height:100%" :video-id="heroVideoId" @ready="ready" player-width="100%" player-height="100%" :player-vars="playerVars"></youtube>
-        <transition name="fade-in" appear>
-          <img :src="thumbnail.large.url">
-        </transition>
       </div>
     </div>
 
-    <div class="videoHero__separator">
-      <div class="videoHero__separator__icon"
+    <transition name="hero-in" appear>
+      <div v-if="thumbnail.large.url" class="homeHero__imageWrap rellax"
+        :style="`background-image: url(${thumbnail.large.url})`"
+        data-rellax-speed="-4" data-rellax-percentage="0.5">
+      </div>
+    </transition>
+
+    <div class="homeHero__separator">
+      <div class="homeHero__separator__icon"
         v-scroll-reveal="{origin: 'top', distance: '200px'}"><img src="~assets/img/icon.png"></div>
-      <svg class="videoHero__separator__polygon" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#fff" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
+      <svg class="homeHero__separator__polygon" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#fff" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
     </div>
   </section>
 </template>
 
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
+let Rellax = require('rellax')
 
 export default {
   props: ['url', 'thumbnail', 'body'],
   data () {
     return {
-      videoReady: false,
-      playerVars: {
+      videoReady: false
+    }
+  },
+  computed: {
+    heroVideoId () {
+      if (this.url) return getIdFromURL(this.url)
+      return null
+    },
+    playerVars() {
+      let vid = ''
+      if (this.url) {
+        vid = getIdFromURL(this.url)
+      }
+      return {
         'autoplay': 1,
         'controls': 0,
         'autohide': 1,
@@ -39,13 +56,8 @@ export default {
         'showinfo': 0,
         'loop': 1,
         'mute': 1,
-        'playlist': getIdFromURL(this.url)
+        'playlist': vid
       }
-    }
-  },
-  computed: {
-    heroVideoId () {
-      return getIdFromURL(this.url)
     }
   },
   methods: {
@@ -57,20 +69,23 @@ export default {
       this.player.playVideo()
       this.player.mute()
     }
+  },
+  mounted () {
+    let rellax = new Rellax('.rellax')
   }
 }
 </script>
 
 <style lang="scss">
 @import '~assets/styles/mixins';
-#videoHero {
+#homeHero {
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 90vh;
   @include mobile() {
-    min-height: 100%;
+    min-height: 60vh;
   }
-  .videoHero {
+  .homeHero {
     &__embed {
       z-index: 0;
       .youtubeWrapper {
@@ -86,6 +101,11 @@ export default {
         display: block;
         position: relative;
       }
+    }
+    &__imageWrap {
+      @include overlay();
+      background-size: cover!important;
+      background-position: cover;
     }
     &__overlay {
       z-index: 2;
@@ -142,6 +162,14 @@ export default {
       }
     }
   }
+}
+
+.hero-in-enter-active, .hero-in-leave-active {
+  transition: all 0.5s ease;
+}
+.hero-in-enter, .hero-in-leave-to  {
+  opacity: 0;
+  transform: translate3d(0, -100px, 0)
 }
 </style>
 

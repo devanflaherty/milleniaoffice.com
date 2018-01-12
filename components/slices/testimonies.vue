@@ -5,11 +5,12 @@
         v-scroll-reveal="{distance: '100px'}">What people are saying.</h2>
       <hr>
 
-      <blockquote id="quote" class="testimonies__quote"
-        v-scroll-reveal="{distance: '100px', delay: '250'}">
-        <div class="quote" v-html="$prismic.asHtml(activeQuote.quote)"></div>
-        <p class="author">{{activeQuote.author}}</p>
-      </blockquote>
+      <div class="quoteWrap" v-scroll-reveal="{distance: '100px', delay: '250'}">
+        <blockquote id="quote" class="testimonies__quote">
+          <div class="quote" v-html="$prismic.asHtml(activeQuote.quote)"></div>
+          <p class="author">{{activeQuote.author}}</p>
+        </blockquote>
+      </div>
     </div>
     
     <div class="testimonies__arrows">
@@ -33,12 +34,20 @@ export default {
     return {
       activeIndex: 0,
       activeQuote: this.quotes[0],
-      length: this.quotes.length
+      length: this.quotes.length,
+      blockHeight: null
+    }
+  },
+  watch: {
+    blockHeight () {
+      let block = document.querySelector('#quote')
+      block.style.height = this.blockHeight + 'px'
     }
   },
   methods: {
     animateQuote (dir) {
       let quoteTl = new TimelineMax()
+      let block = document.querySelector('#quote')
       let quote = document.querySelector('.quote')
       let author = document.querySelector('.author')
 
@@ -67,6 +76,15 @@ export default {
             y: 0,
             autoAlpha: 1
           }, 0.5)
+          .addCallback(() => {
+            sizeQuote()
+          })
+
+          const sizeQuote = () => {
+            TweenMax.to(block, 0.25, {
+              height: quote.offsetHeight + author.offsetHeight
+            })
+          }
       }
       if (dir === 'next') {
         anime(200)
@@ -102,12 +120,16 @@ export default {
       }
 
       setIndex().then((nav) => {
-        console.log(nav.index)
         this.activeIndex = nav.index
         this.animateQuote(nav.dir)
         // Quote is updated in animation callback
       })
     }
+  },
+  mounted () {
+    let quote = document.querySelector('.quote')
+    let author = document.querySelector('.author')
+    this.blockHeight = quote.offsetHeight + author.offsetHeight
   }
 }
 </script>
@@ -125,39 +147,41 @@ export default {
   }
   &__quote {
     .quote {
-     font-size: 40px;
-     text-align: center;
-     font-weight: 400;
-     line-height: 1.25;
-     letter-spacing: .25px;
-     width: 75%;
-     margin: 2rem auto;
-     @include mobile() {
-      width: 90%;
-      font-size: 1.66rem;
-     }
-     strong {
+      font-size: 40px;
+      text-align: center;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: .25px;
+      width: 75%;
+      margin: 2rem auto;
+      // position: absolute;
+      @include mobile() {
+        width: 90%;
+        font-size: 1.66rem;
+      }
+      strong {
        font-weight: 400;
        position: relative;
        display: inline-block;
        &:before {
-         z-index: -1;
-         content: '';
-         display: inline-block;
-         background: $primary;
-         height: 30px;
-         width: 95%;
-         position: absolute;
-         top: 1.5rem;
-         left: 2rem;
-         @include mobile() {
-           top: .75rem;
-           height: 20px;
-         }
-       }
-     }
+          z-index: -1;
+          content: '';
+          display: inline-block;
+          background: $primary;
+          height: 30px;
+          width: 95%;
+          position: absolute;
+          top: 1.5rem;
+          left: 2rem;
+          @include mobile() {
+            top: .75rem;
+            height: 20px;
+          }
+        }
+      }
     }
     .author {
+      // position: absolute;
       margin-top: 2rem;
       text-align: center;
       text-transform: uppercase;

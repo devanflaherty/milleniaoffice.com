@@ -15,17 +15,17 @@ export default {
   props: ['menu', 'mobileNav'],
   watch: {
     mobileNav (bool) {
-      let tl = new TimelineMax({delay: 0.125})
+      let tl = new TimelineMax({delay: 0.25})
       if (bool) {
-        tl.staggerFromTo('.mobile-item', 0.33, {
+        tl.staggerFromTo('.mobile-item', 0.25, {
           y: -100,
           autoAlpha: 0
         }, {
           y: 0,
           autoAlpha: 1
-        }, 0.25)
+        }, 0.125)
       } else {
-        tl.staggerTo('.mobile-item', 0.5, {
+        tl.staggerTo('.mobile-item', 0.33, {
           autoAlpha: 0
         }, 0.25)
       }

@@ -9,11 +9,24 @@ h2, h2.title {
   }
 }
 
-p.large-type {
+.large-type {
   @include largeType();
+  p {
+    @include largeType();
+  }
+}
+
+.medium-type {
+  @include mediumType();
+  p {
+    @include mediumType();
+  }
 }
 
 .rich-text {
+  > *:last-child {
+    margin-bottom: 0;
+  }
   h3 {
     @include largeType();
     margin-bottom: 1.5rem;
@@ -43,5 +56,16 @@ p.large-type {
   }
   a {
     color: darken($primary, 10%);
+  }
+}
+
+.has-text-white {
+  strong {
+    color: $white;
+  }
+}
+.has-text-black {
+  strong {
+    color: $black;
   }
 }

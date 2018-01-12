@@ -23,10 +23,12 @@
 
         <div class="columns">
           <div class="column is-6">
-            <div class="rich-text" v-html="$prismic.asHtml(ie.exp_description)"
+            <div class="rich-text" 
+              v-if="ie.exp_description.text"
+              v-html="$prismic.asHtml(ie.exp_description)"
               v-scroll-reveal="{distance: '100px'}"></div>
 
-            <a :href="$prismic.asLink(ie.exp_button_url)" class="button is-outlined is-primary"
+            <a :href="$prismic.asLink(ie.exp_button_url)" class="button is-outlined is-primary is-small"
               v-scroll-reveal="{distance: '100px'}">{{ie.exp_button_label}}</a>
           </div>
         </div>
@@ -38,14 +40,21 @@
 <script>
 export default {
   props: ['slice'],
+  head () {
+    return {
+      script: [
+        {'src': '/pano/js/screenfull.min.js'}
+      ]
+    }
+  },
   data () {
     return {
       ie: this.slice.primary
     }
   },
   mounted () {
-    let fullScreenScript = document.createElement('script')
-    fullScreenScript.src = '/pano/js/screenfull.min.js'
+    // let fullScreenScript = document.createElement('script')
+    // fullScreenScript.src = '/pano/js/screenfull.min.js'
     // Write the correct ID of the iframe element,
     // as used in your html.
     /* eslint-disable */
@@ -54,13 +63,11 @@ export default {
     var didUserForceExit
     var wasFs
 
-    // $(document).ready(function () {
-    // 	if (screenfull.enabled) {
-    // 		setInterval(checkFullScreen, 500);
-    // 	}
-    // })
+    // if (screenfull.enabled) {
+    //   setInterval(checkFullScreen, 500);
+    // }
 
-    function goFullScreen (onoff) {
+    window.goFullScreen = function (onoff) {
       if (onoff) {
         didUserForceExit = true
         if (screenfull.enabled) {
@@ -109,11 +116,11 @@ export default {
     // the script inside of iframe to update the FS button icon.
 
     function checkFullScreen () {
-		if (!screenfull.isFullscreen && didUserForceExit) {
-			didUserForceExit = false;
-			getIframeWindow(el).UpdateFSButton();
-		}
-   }
+      if (!screenfull.isFullscreen && didUserForceExit) {
+        didUserForceExit = false;
+        getIframeWindow(el).UpdateFSButton();
+      }
+    }
    /* eslint-enable */
   }
 }
@@ -173,7 +180,7 @@ export default {
         }
       }
       #pano-iframe {
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         height: 600px;
         width: 100%;
         @include mobile() {
@@ -181,7 +188,7 @@ export default {
         }
       }
       .button {
-        margin-top: 4rem;
+        margin-top: 2rem;
         @include mobile() {
           display: block;
         }

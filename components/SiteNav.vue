@@ -3,7 +3,9 @@
     <transition name="nav-in" appear>
       <div class="navbar-brand" v-if="navVis">
         <div class="navbar-item">
-          <img src="~assets/img/millenia_logo.png" alt="Millenia Logo" class="logo">
+          <nuxt-link to="/">
+            <img src="~assets/img/millenia_logo.png" alt="Millenia Logo" class="logo">
+          </nuxt-link>
         </div>
         <div class="nav-burg" :class="{'is-active': mobileNav}" @click="showMobileNav">
           <span></span>
@@ -139,6 +141,12 @@ export default {
           transition: all 0.5s ease;
         }
         &:hover {
+          &:after {
+            background: darken($primary, 20%);
+            width: 100%;
+          }
+        }
+        &.nuxt-link-exact-active {
           &:after {
             background: darken($primary, 20%);
             width: 100%;

@@ -10,7 +10,8 @@ import banner from '~/components/slices/banner'
 import fullImage from '~/components/slices/fullImage'
 import gallery from '~/components/slices/gallery'
 import richText from '~/components/slices/richText'
-// import quote from '~/components/slices/quote'
+import quote from '~/components/slices/quote'
+import tabPanel from '~/components/slices/tabPanel'
 
 // Utilities
 import videoEmbed from '~/components/utilities/videoEmbed'
@@ -28,7 +29,8 @@ Vue.component('banner', banner)
 Vue.component('fullImage', fullImage)
 Vue.component('gallery', gallery)
 Vue.component('richText', richText)
-// Vue.component('quote', quote)
+Vue.component('quote', quote)
+Vue.component('tabPanel', tabPanel)
 
 Vue.component('videoEmbed', videoEmbed)
 // Vue.component('captionedImage', captionedImage)

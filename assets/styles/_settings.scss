@@ -52,3 +52,10 @@ $size-7:	0.75rem;
     font-weight: $weight-medium;
   }
 }
+
+@mixin mediumType() {
+  font-size: 1.25rem;
+  strong {
+    font-weight: $weight-medium;
+  }
+}

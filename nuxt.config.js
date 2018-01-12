@@ -1,7 +1,7 @@
-var url = 'https://milleniaoffice.co'
-var title = 'Millenia Office'
-var desc = 'Millenia Office is an amenity rich cluster of three world-class campuses designed to facilitate a new paradigm of how and where people want to work.'
-var unfurl = `${url}/unfurl.jpg`
+let url = 'https://milleniaoffice.co'
+let title = 'Millenia Office'
+let desc = 'Millenia Office is an amenity rich cluster of three world-class campuses designed to facilitate a new paradigm of how and where people want to work.'
+let unfurl = `${url}/unfurl.jpg`
 
 module.exports = {
   /*
@@ -39,7 +39,7 @@ module.exports = {
       }
     ]
   },
-  loading: { color: '#484848', height: '6px' },
+  loading: { color: '#bcdae7', height: '4px' },
   /*
   ** Global CSS
   */
@@ -52,12 +52,13 @@ module.exports = {
     // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
   plugins: [
+    { src: `~plugins/vue-lazyload`, ssr: false },
     { src: `~plugins/vue-youtube-embed`, ssr: false },
-    { src: `~plugins/waypoints`, ssr: false },
+    { src: `~plugins/vue-sweet-scroll`, ssr: false },
     { src: `~plugins/vue-scroll-reveal`, ssr: false },
     { src: `~plugins/vue-swiper`, ssr: false },
+    { src: `~plugins/vee-validate`, ssr: false },
     { src: `~mixins/utilities` },
-    { src: `~plugins/vee-validate` },
     { src: `~plugins/slices` },
     { src: `~plugins/prismic` }
   ],
@@ -76,7 +77,9 @@ module.exports = {
         }
         // if link has anchor,  scroll to anchor by returning the selector
         if (to.hash) {
-          position = { selector: to.hash }
+          // let hash = this.$route.hash
+          // this.scrollTo(hash, 100)
+          // position = { selector: to.hash }
         }
         return position
       }
@@ -87,12 +90,6 @@ module.exports = {
   */
   build: {
     vendor: ['axios', 'sweet-scroll', 'scrollreveal', 'vue-youtube-embed'],
-    // extend (config) {
-    //   config.module.rules.push({
-    //     test: /\.js$/,
-    //     exclude: [/(node_modules|bower_components)(?![/|\\](swiper))/] 
-    //   })
-    // },
     postcss: {
       plugins: {
         'postcss-custom-properties': false

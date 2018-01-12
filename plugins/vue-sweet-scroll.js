@@ -36,7 +36,7 @@ var defaultOptions = {
 }
 var mySweetScroll = {
   install: function install (Vue) {
-    Vue.prototype.$ss = function (el, options) {
+    Vue.prototype.$ss = function (options) {
       if (!options) {
         options = defaultOptions
       }
@@ -45,29 +45,19 @@ var mySweetScroll = {
     }
     Vue.mixin({
       methods: {
-        scrollTo (el) {
-          this.sweetScroll.to(el)
+        scrollTo (el, offset) {
+          const sweetScroll = new SweetScroll({
+            offset: offset
+          })
+          sweetScroll.to(el)
         }
       }
     })
     Vue.directive('sweet-scroll', {
       inserted: function inserted (el, binding) {
-        let options = binding.value || {}
-        if (!options) {
-          options = defaultOptions
-        }
+        const sweetScroll = new SweetScroll()
 
-        if (binding.modifiers) {
-          if (binding.modifiers.reset) {
-            options.reset = true
-          }
-
-          if (binding.modifiers.nomobile) {
-            options.mobile = false
-          }
-        }
-
-        // sr.reveal(el, options)
+        sweetScroll.to(el)
       }
     })
   }
