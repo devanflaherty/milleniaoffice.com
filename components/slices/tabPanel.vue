@@ -9,13 +9,6 @@
         </ul>
       </div>
 
-      <!-- <div class="slice__tabPanel__tabContainer">
-        <div class="slice__tabPanel__tabContainer__block--is-active">
-          <gallery :galleryID="activeTab.gallery.id" v-if="activeTab.gallery.id" />
-          <img v-if="activeTab.image.url" :src="activeTab.image.large.url">
-        </div>
-      </div>  -->
-
       <transition name="fade-in" appear>
         <div v-if="tabsReady" class="slice__tabPanel__tabContainer" :style="`height: ${height}`"> 
           <div class="slice__tabPanel__tabContainer__wrap"

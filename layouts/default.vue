@@ -1,41 +1,41 @@
 <template>
   <main class="main">
-    <!-- <SiteNav /> -->
+    <SiteNav />
     <nuxt />
-    <!-- <SiteFooter v-if="!loading" /> -->
+    <SiteFooter v-if="!loading" />
   </main>
 </template>
 
 <script>
 
-// import SiteNav from '~/components/SiteNav'
-// import SiteFooter from '~/components/SiteFooter'
+import SiteNav from '~/components/SiteNav'
+import SiteFooter from '~/components/SiteFooter'
 
-// import breakpoints from '~/mixins/breakpoints'
-// import {beforeEnter, enter, leave} from '~/mixins/page-transitions'
-// import {mapGetters} from 'vuex'
+import breakpoints from '~/mixins/breakpoints'
+import {beforeEnter, enter, leave} from '~/mixins/page-transitions'
+import {mapGetters} from 'vuex'
 
 export default {
-  // components: {
-  //   SiteNav,
-  //   SiteFooter
-  // },
-  // transition: {
-  //   name: 'page',
-  //   mode: 'out-in',
-  //   css: false,
-  //   beforeEnter,
-  //   enter,
-  //   leave
-  // },
-  // mixins: [breakpoints],
-  // computed: {
-  //   ...mapGetters('layout', ['loading'])
-  // },
-  // beforeCreate () {
-  //   this.$store.dispatch('layout/getMenus')
-  //   this.$store.dispatch('layout/getSettings')
-  // }
+  components: {
+    SiteNav,
+    SiteFooter
+  },
+  transition: {
+    name: 'page',
+    mode: 'out-in',
+    css: false,
+    beforeEnter,
+    enter,
+    leave
+  },
+  mixins: [breakpoints],
+  computed: {
+    ...mapGetters('layout', ['loading'])
+  },
+  beforeCreate () {
+    this.$store.dispatch('layout/getMenus')
+    this.$store.dispatch('layout/getSettings')
+  }
 }
 </script>
 

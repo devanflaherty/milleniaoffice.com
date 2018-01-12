@@ -121,7 +121,7 @@ export default {
         ctx.toolbar()
       })
     }
-
+    this.$rellax('.rellax')
     // let rellax = new Rellax('.rellax') // eslint-disable-line
   }
 }

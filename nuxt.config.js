@@ -52,6 +52,7 @@ module.exports = {
     // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
   plugins: [
+    { src: `~plugins/vue-rellax`, ssr: false },
     { src: `~plugins/vue-lazyload`, ssr: false },
     { src: `~plugins/vue-youtube-embed`, ssr: false },
     { src: `~plugins/vue-sweet-scroll`, ssr: false },
@@ -89,7 +90,7 @@ module.exports = {
   ** Add axios globally
   */
   build: {
-    vendor: ['axios', 'sweet-scroll', 'scrollreveal', 'vue-youtube-embed'],
+    vendor: ['axios', 'sweet-scroll', 'scrollreveal'],
     postcss: {
       plugins: {
         'postcss-cssnext': {

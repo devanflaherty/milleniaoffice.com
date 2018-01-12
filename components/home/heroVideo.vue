@@ -73,6 +73,7 @@ export default {
     }
   },
   mounted () {
+    this.$rellax('.rellax')
     // let rellax = new Rellax('.rellax') // eslint-disable-line
   }
 }

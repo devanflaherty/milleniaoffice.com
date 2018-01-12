@@ -54,11 +54,6 @@ export default {
           type: 'bullets',
           clickable: true
         }
-        // on: {
-        //   slideChange: (swiper) => {
-        //     this.activeSlide = this.$refs.mySwiper.swiper.realIndex
-        //   }
-        // }
       }
     }
   },

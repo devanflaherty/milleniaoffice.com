@@ -99,7 +99,8 @@ export default {
       this.$prismic.initApi().then((ctx) => {
         ctx.toolbar()
       })
-
+      
+      this.$rellax('.rellax')
       // let rellax = new Rellax('.rellax') // eslint-disable-line
     }
   }
