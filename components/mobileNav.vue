@@ -1,9 +1,20 @@
 <template>
   <div id="mobileNav" :class="{'is-active': mobileNav}">
     <div class="mobile-nav-wrap">
-      <nuxt-link class="navbar-item mobile-item" :to="$prismic.asLink(link.primary.link)" v-for="(link, index) in menu" :key="index">
-        {{$prismic.asText(link.primary.label)}}
-      </nuxt-link>
+      <div class="navbar-item" :class="{'has-dropdown is-hoverable': link.items[0].sub_nav_link_label}" v-for="(link, index) in menu" :key="index">
+        <nuxt-link v-if="link.primary.link.type" class="mobile-item" :to="$prismic.asLink(link.primary.link)">
+          {{$prismic.asText(link.primary.label)}}
+        </nuxt-link>
+        <a href="#" v-else>
+          {{$prismic.asText(link.primary.label)}}
+        </a>
+
+        <div class="navbar-dropdown" v-if="link.items[0].sub_nav_link_label">
+          <nuxt-link v-if="$prismic.asLink(sublink.sub_nav_link)" :to="$prismic.asLink(sublink.sub_nav_link)" class="navbar-item" v-for="(sublink, i) in link.items" :key="i">
+            {{sublink.sub_nav_link_label}}
+          </nuxt-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -13,6 +24,11 @@ import {TimelineMax} from 'gsap'
 
 export default {
   props: ['menu', 'mobileNav'],
+  data () {
+    return {
+      hoveredItem: null
+    }
+  },
   watch: {
     mobileNav (bool) {
       let tl = new TimelineMax({delay: 0.25})
@@ -29,6 +45,25 @@ export default {
           autoAlpha: 0
         }, 0.25)
       }
+    }
+  },
+  methods: {
+    // showSub (length, i) {
+    //   this.hoveredItem = i
+    //   let navItem = document.querySelector('.is-hovering')
+    //   console.log(navItem)
+    //   if (navItem.classList.contains('has-dropdown')) {
+    //     let dd = navItem.querySelector('.navbar-dropdown')
+    //     TweenMax.to(dd, 0.5, {
+    //       height: this.navHeight(length)
+    //     })
+    //   }
+    // },
+    // closeSub () {
+    //   this.hoveredItem = null
+    // },
+    navHeight (length) {
+      return (length * 40) + 'px'
     }
   }
 }
@@ -63,9 +98,9 @@ export default {
         padding-left: 1rem;
         padding-right: 1rem;
       }
-      .navbar-item {
+      .navbar-item a {
         position: relative;
-        display: block;
+        display: inline-block;
         font-size: 1.5rem;
         font-weight: 500;
         color: $black;
@@ -90,9 +125,45 @@ export default {
         }
         &:hover {
           &:after {
-            width: 50%;
+            width: auto;
             background: $black;
           }
+        }
+      }
+      .navbar-item.has-dropdown {
+        padding-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &:hover {
+          .navbar-dropdown {
+            flex: 1;
+            a {
+              height: 30px;
+              padding: .25rem 0 0;
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+      .navbar-dropdown {
+        padding: 0;
+        transition: all 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a {
+          color: rgba($black, 0.8);
+          font-size: 1.125rem;
+          display: inline-block;
+          opacity: 0;
+          visibility: hidden;
+          height: 0px;
+          padding: 0;
+          margin-left: 1rem;
+          overflow: hidden;
+          transition: all 0.5s ease;
         }
       }
     }

@@ -1,8 +1,8 @@
 <template>
   <section id="homeHero">
     <div class="homeHero__overlay">
-      <div class="container">
-        <div v-html="$prismic.asHtml(body)" v-scroll-reveal="{scale: 1, distance: '100px', origin: 'left'}"></div>
+      <div class="container" :class="heroContrast">
+        <div v-html="$prismic.asHtml(heroHeadline)" v-scroll-reveal="{scale: 1, distance: '100px', origin: 'left'}"></div>
       </div>
     </div>
     
@@ -29,18 +29,21 @@
 
 <script>
 import { getIdFromURL } from 'vue-youtube-embed'
-// if (process.client) {
-//   let Rellax = require('rellax') // eslint-disable-line
-// }
 
 export default {
-  props: ['url', 'thumbnail', 'body'],
+  props: ['url', 'thumbnail', 'heroHeadline', 'contrast'],
   data () {
     return {
       videoReady: false
     }
   },
   computed: {
+    heroContrast () {
+      return {
+        'has-text-black': this.contrast === 'Dark',
+        'has-text-white': this.contrast === 'Light'
+      }
+    },
     heroVideoId () {
       if (this.url) return getIdFromURL(this.url)
       return null
@@ -74,7 +77,6 @@ export default {
   },
   mounted () {
     this.$rellax('.rellax')
-    // let rellax = new Rellax('.rellax') // eslint-disable-line
   }
 }
 </script>
@@ -85,6 +87,7 @@ export default {
   position: relative;
   overflow: hidden;
   min-height: 90vh;
+  background: $black; 
   @include mobile() {
     min-height: 60vh;
   }
@@ -118,10 +121,14 @@ export default {
       height: 100%;
       display: flex;
       align-items: center;
+      background: rgba(0, 0, 0, 0.5);
       .container {
-        p {
+        position: relative;
+        z-index: 5;
+        h1, h2 {
           color: $white;
-          margin-bottom: 1rem;
+          font-size: 4rem;
+          line-height: 1.2;
           strong {
             color: $white;
           }
@@ -132,7 +139,7 @@ export default {
       }
     }
     &__separator {
-      z-index: 1;
+      z-index: 6;
       position: absolute;
       top: 0;
       width: 100%;
@@ -141,17 +148,15 @@ export default {
         z-index: 2;
         position: absolute;
         bottom: 1rem;
-        left: 0;
-        right: 0;
+        right: 3rem;
         margin: 0 auto;
-        height: 100px;
-        width: 100px;
-        display: flex;
-        justify-content: center;
+        height: 55px;
+        width: 55px;
+        opacity: 0.66;
         @include mobile() {
           bottom: .33rem;
-          height: 60px;
-          width: 60px;
+          height: 40px;
+          width: 40px;
         }
       }
       &__polygon {
@@ -168,7 +173,7 @@ export default {
 }
 
 .hero-in-enter-active, .hero-in-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.5s 1.5s ease;
 }
 .hero-in-enter, .hero-in-leave-to  {
   opacity: 0;

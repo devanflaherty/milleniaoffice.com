@@ -174,7 +174,10 @@ router.get('/users/:id', function (req, res, next) {
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var Jarvis = __webpack_require__(6);
+var UglifyJSWebpackPlugin = __webpack_require__(7);
 
 var url = 'https://milleniaoffice.co';
 var title = 'Millenia Office';
@@ -185,6 +188,8 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  analyze: true,
+  extractCSS: true,
   head: {
     titleTemplate: '%s - Millenia Office',
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { name: 'theme-color', content: '#ffffff' }, { name: 'robots', content: 'all' }, { hid: 'description', name: 'description', content: desc }, { hid: 'og:url', property: 'og:url', content: url }, { hid: 'og:image', property: 'og:image', content: unfurl }, { hid: 'og:title', property: 'og:title', content: title }, { hid: 'og:description', property: 'og:description', content: desc }, { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' }, { hid: 'twitter:domain', name: 'twitter:domain', value: url }, { hid: 'twitter:title', name: 'twitter:title', value: title }, { hid: 'twitter:description', name: 'twitter:description', value: desc }, { hid: 'twitter:image', name: 'twitter:image', content: unfurl }, { hid: 'twitter:url', name: 'twitter:url', value: url }],
@@ -201,12 +206,10 @@ module.exports = {
   ** Global CSS
   */
   css: [{ src: '~assets/styles/main.scss', lang: 'scss' }],
-  modules: [
-  // '@nuxtjs/pwa',
-  '@nuxtjs/font-awesome'
+  modules: ['@nuxtjs/pwa', '@nuxtjs/font-awesome'
   // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
-  plugins: [{ src: '~plugins/vue-lazyload', ssr: false }, { src: '~plugins/vue-youtube-embed', ssr: false }, { src: '~plugins/vue-sweet-scroll', ssr: false }, { src: '~plugins/vue-scroll-reveal', ssr: false }, { src: '~plugins/vue-swiper', ssr: false }, { src: '~plugins/vee-validate', ssr: false }, { src: '~mixins/utilities' }, { src: '~plugins/slices' }, { src: '~plugins/prismic' }],
+  plugins: [{ src: '~plugins/vue-rellax', ssr: false }, { src: '~plugins/vue-lazyload', ssr: false }, { src: '~plugins/vue-youtube-embed', ssr: false }, { src: '~plugins/vue-sweet-scroll', ssr: false }, { src: '~plugins/vue-scroll-reveal', ssr: false }, { src: '~plugins/vue-swiper', ssr: false }, { src: '~plugins/vee-validate', ssr: false }, { src: '~mixins/utilities' }, { src: '~plugins/slices' }, { src: '~plugins/prismic' }],
   router: {
     middleware: ['toggleNav'],
     scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -244,9 +247,13 @@ module.exports = {
         }
       }
     },
+    // plugins: [
+    //   new UglifyJSWebpackPlugin()
+    // ],
     extend: function extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
+        config.plugins.push(new Jarvis());
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -257,6 +264,18 @@ module.exports = {
     }
   }
 };
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("webpack-jarvis");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("uglifyjs-webpack-plugin");
 
 /***/ })
 /******/ ]);

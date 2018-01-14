@@ -147,7 +147,7 @@ export default {
   }
   &__quote {
     .quote {
-      font-size: 40px;
+      font-size: 2rem;
       text-align: center;
       font-weight: 400;
       line-height: 1.25;
@@ -157,7 +157,7 @@ export default {
       // position: absolute;
       @include mobile() {
         width: 90%;
-        font-size: 1.66rem;
+        font-size: 1.5rem;
       }
       strong {
        font-weight: 400;
@@ -171,8 +171,8 @@ export default {
           height: 30px;
           width: 95%;
           position: absolute;
-          top: 1.5rem;
-          left: 2rem;
+          top: .75rem;
+          left: 1.25rem;
           @include mobile() {
             top: .75rem;
             height: 20px;

@@ -10,14 +10,14 @@
 }
 
 @mixin largeType() {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   strong {
     font-weight: $weight-medium;
   }
 }
 
 @mixin mediumType() {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   strong {
     font-weight: $weight-medium;
   }

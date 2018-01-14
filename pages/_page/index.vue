@@ -27,9 +27,6 @@
 
 <script>
 import subNav from '~/components/subNav'
-// if (process.client) {
-//   let Rellax = require('rellax') // eslint-disable-line
-// }
 
 export default {
   name: 'Page',
@@ -114,9 +111,8 @@ export default {
       this.$prismic.initApi().then((ctx) => {
         ctx.toolbar()
       })
-      
+
       this.$rellax('.rellax')
-      // let rellax = new Rellax('.rellax') // eslint-disable-line
     }
   }
 }

@@ -36,14 +36,14 @@ export default {
 .slice__quote {
   &__block {
     &__text {
-      font-size: 40px;
+      font-size: 2.5rem;
       font-weight: 300;
       line-height: 1.25;
       letter-spacing: .25px;
       margin: 2rem auto;
       @include mobile() {
         width: 90%;
-        font-size: 1.66rem;
+        font-size: 1.5rem;
       }
       strong {
         font-weight: 400;

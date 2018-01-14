@@ -1,19 +1,16 @@
 <template>
   <article class="slice__interactiveExperience">
-    <div class="slice__interactiveExperience__separator">
-      <svg class="seperator" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#f9f9f9" width="100%" height="120" viewBox="0 0 4 0.266661" preserveAspectRatio="none" style="height: 120px;"><polygon class="fil0" points="4,0 4,0.266661 -0,0.266661 "></polygon></svg>
-    </div>
-
     <section class="section slice__interactiveExperience__section">
       <div class="container">
         <header class="columns">
-          <div class="column">
+          <div class="column has-text-centered">
             <div class="rich-text title" v-html="$prismic.asHtml(ie.exp_title)"
               v-scroll-reveal="{distance: '100px'}"></div>
-          </div>
-          <div class="column is-narrow contact">
-            <a href="">Contact us to experience<br> the tour on site.</a>
-            <span class="down-icon fa fa-angle-double-down has-text-white"></span>
+
+            <div class="rich-text"
+              v-if="$prismic.asText(ie.exp_description)"
+              v-html="$prismic.asHtml(ie.exp_description)"
+              v-scroll-reveal="{distance: '100px'}"></div>
           </div>
         </header>
         
@@ -22,13 +19,10 @@
           v-scroll-reveal="{distance: '100px'}"></iframe>
 
         <div class="columns">
-          <div class="column is-6">
-            <div class="rich-text" 
-              v-if="ie.exp_description.text"
-              v-html="$prismic.asHtml(ie.exp_description)"
-              v-scroll-reveal="{distance: '100px'}"></div>
-
-            <a :href="$prismic.asLink(ie.exp_button_url)" class="button is-outlined is-primary is-small"
+          <div class="column">
+            <a :href="$prismic.asLink(ie.exp_button_url)" 
+              v-if="ie.exp_button_url.url"
+              class="button is-outlined is-primary is-small"
               v-scroll-reveal="{distance: '100px'}">{{ie.exp_button_label}}</a>
           </div>
         </div>
@@ -130,21 +124,9 @@ export default {
 @import '~assets/styles/mixins';
 .slice {
   &__interactiveExperience {
-    background: $grey-light;
     padding: 4rem 0 6rem;
     margin-top: 3rem;
     position: relative;
-    &__separator {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 600px;
-      background-color: rgb(179, 217, 228);
-      svg {
-        position: absolute;
-        bottom: -1px;
-      }
-    }
     &__section {
       padding-top: 0;
       padding-bottom: 0;

@@ -114,9 +114,9 @@ export default {
     })
   },
   beforeDestroy () {
-    if (this.$refs.mySwiper && this.$refs.mySwiper.swiper) {
-      this.$refs.mySwiper.swiper.destroy()
-    }
+    // if (this.$refs.mySwiper && this.$refs.mySwiper.swiper) {
+    //   this.$refs.mySwiper.swiper.destroy()
+    // }
   }
 }
 </script>

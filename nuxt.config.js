@@ -1,3 +1,6 @@
+const Jarvis = require('webpack-jarvis')
+const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin')
+
 let url = 'https://milleniaoffice.co'
 let title = 'Millenia Office'
 let desc = 'Millenia Office is an amenity rich cluster of three world-class campuses designed to facilitate a new paradigm of how and where people want to work.'
@@ -7,6 +10,8 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  analyze: true,
+  extractCSS: true,
   head: {
     titleTemplate: '%s - Millenia Office',
     meta: [
@@ -100,9 +105,13 @@ module.exports = {
         }
       }
     },
+    // plugins: [
+    //   new UglifyJSWebpackPlugin()
+    // ],
     extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
+        config.plugins.push(new Jarvis())
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

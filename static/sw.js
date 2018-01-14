@@ -8,40 +8,40 @@ const workboxSW = new self.WorkboxSW({
 
 workboxSW.precache([
   {
-    "url": "/_nuxt/app.d5aba8d151988d5eae6d.js",
-    "revision": "dfaf5436c404296b430ea5d5b232af8c"
+    "url": "/_nuxt/app.49df80f95981d61f1857.js",
+    "revision": "cc9a03d4c31e627e8936ea721fa2d168"
   },
   {
-    "url": "/_nuxt/layouts/default.3996530668a342c33540.js",
-    "revision": "e4a92c4c8e984b2cfbdee29b01eceedb"
+    "url": "/_nuxt/layouts/default.61c64f58a0069ad8715c.js",
+    "revision": "fad032325e09ea164b8c2cb5dbe94e86"
   },
   {
-    "url": "/_nuxt/manifest.0bbb710ffcf6de20448b.js",
-    "revision": "809bbf2554089a3ff21ffaaca1e1e748"
+    "url": "/_nuxt/manifest.a9096ab7ca151bf9bd15.js",
+    "revision": "6efbc948f0f346388938cab13aa04afc"
   },
   {
-    "url": "/_nuxt/pages/_page/_child.4c110053563c7cc0e382.js",
-    "revision": "cc9eb06c84d9a5faea1ab5a18831d0aa"
+    "url": "/_nuxt/pages/_page/_child.39c24a0e9affb867c4ca.js",
+    "revision": "414488f23dbdeb31cbea28f0da84ec34"
   },
   {
-    "url": "/_nuxt/pages/_page/index.9928f55aaecffd3d1097.js",
-    "revision": "13e59553f798b14b76975c7a29338122"
+    "url": "/_nuxt/pages/_page/index.1e9547bc7d728257f895.js",
+    "revision": "498cb7cb8c32824f7ea0bd40f01391a2"
   },
   {
-    "url": "/_nuxt/pages/contact.734b0a239a6afcbcf046.js",
-    "revision": "35d5e9aba1be41c9b065dd3145345fc6"
+    "url": "/_nuxt/pages/contact.dd0deabd9630e0f7f1b5.js",
+    "revision": "a69bebee8d8d5cc8540cc94314700af0"
   },
   {
-    "url": "/_nuxt/pages/index.490ab63b92c01adfe366.js",
-    "revision": "ab93b97b06aca9bde547a3c21cf66d06"
+    "url": "/_nuxt/pages/index.8162d294ab9240a5f11f.js",
+    "revision": "4609ebb77af5e5f9af74e83ce39dcc8a"
   },
   {
     "url": "/_nuxt/pages/preview.b123f3d34b16c1ed80c2.js",
     "revision": "75c9b648e3c1b3aae08a2865a7b7efcc"
   },
   {
-    "url": "/_nuxt/vendor.922f9915334ea0799bad.js",
-    "revision": "be3748836241f0998fd071b37c29e4b4"
+    "url": "/_nuxt/vendor.62b590ef74d9d4634e91.js",
+    "revision": "6ebbf31d19fac3f91c4fee762d8d14ad"
   }
 ])
 

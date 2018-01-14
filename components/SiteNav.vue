@@ -16,13 +16,19 @@
     <transition name="nav-in" appear>
       <div id="navMenu" class="navbar-menu" v-if="breakpoint >= 3 && navVis">
         <div class="navbar-end" v-if="mobileNav || breakpoint > 2">
-          <div class="navbar-item" v-for="(link, index) in menu" :key="index" v-if="menu">
+          <div class="navbar-item has-dropdown is-hoverable" v-for="(link, index) in menu" :key="index" v-if="menu">
             <nuxt-link :to="navLink(link)" v-if="link.primary.link.type">
               {{$prismic.asText(link.primary.label)}}
             </nuxt-link>
             <a href="#" v-else>
               {{$prismic.asText(link.primary.label)}}
             </a>
+
+            <div class="navbar-dropdown" v-if="link.items[0].sub_nav_link_label">
+              <nuxt-link v-if="$prismic.asLink(sublink.sub_nav_link)" :to="$prismic.asLink(sublink.sub_nav_link)" class="navbar-item" v-for="(sublink, i) in link.items" :key="i">
+                {{sublink.sub_nav_link_label}}
+              </nuxt-link>
+            </div>
           </div>
         </div>
       </div>
@@ -124,9 +130,30 @@ export default {
       padding-left: 0;
       padding-right: 0;
       margin: 0 1rem;
+      &.has-dropdown {
+        &:hover {
+          .navbar-dropdown {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        .navbar-dropdown {
+          opacity: 0;
+          padding-top: 0;
+          display: block;
+          visibility: hidden;
+          transition: all 0.5s ease;
+          a {
+            line-height: 1;
+            padding: 1rem;
+            margin: 0;
+          }
+        }
+      }
       a {
         color: $black;
-        font-size: 1rem;
+        font-size: 1.125rem;
+        line-height: 100px;
         &:after {
           content: '';
           position: absolute;

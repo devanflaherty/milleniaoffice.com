@@ -1,13 +1,16 @@
 .page {
   &__header {
     background: $black;
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding-top: 100px;
+    padding-bottom: 150px;
     position: relative;
     overflow: hidden;
     h2 {
       color: $white;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      width: 50%;
     }
     &__image {
       opacity: 0.7;
