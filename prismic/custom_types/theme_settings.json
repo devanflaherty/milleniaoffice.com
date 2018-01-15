@@ -1,0 +1,86 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
+      }
+    }
+  },
+  "Footer" : {
+    "footer_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading3",
+        "label" : "Footer Title"
+      }
+    },
+    "footer_content" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, heading3, heading4, heading5, strong, em",
+        "label" : "Footer Content"
+      }
+    },
+    "contact_email" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Contact Email"
+      }
+    }
+  },
+  "Contact" : {
+    "location" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph, strong, em",
+        "label" : "Location"
+      }
+    },
+    "social" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "social_url" : {
+            "type" : "Link",
+            "config" : {
+              "label" : "Social URL",
+              "placeholder" : "https://",
+              "allowTargetBlank" : true
+            }
+          },
+          "social_icon" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Social Icon",
+              "placeholder" : "Icon Class from Font Awesome (fa-twitter)"
+            }
+          }
+        },
+        "label" : "Social"
+      }
+    },
+    "contacts" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "contact_branch" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Contact Branch"
+            }
+          },
+          "contact_info" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "paragraph, strong, em, hyperlink",
+              "label" : "Contact Info"
+            }
+          }
+        },
+        "label" : "Contacts"
+      }
+    }
+  }
+}

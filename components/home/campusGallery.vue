@@ -99,7 +99,7 @@ export default {
   position: relative;
   width: 100%;
   @include desktop () {
-    height: 500px;
+    height: 550px;
   }
 }
 

@@ -1,0 +1,65 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading3",
+        "label" : "Title"
+      }
+    },
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID"
+      }
+    },
+    "dot_pagination" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Yes", "No" ],
+        "default_value" : "Yes",
+        "label" : "Dot Pagination"
+      }
+    },
+    "arrow_navigation" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Yes", "No" ],
+        "default_value" : "Yes",
+        "label" : "Arrow Navigation"
+      }
+    },
+    "images" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "image_title" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Image Title"
+            }
+          },
+          "image_caption" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Image Caption"
+            }
+          },
+          "image" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ {
+                "name" : "large",
+                "width" : 1600,
+                "height" : null
+              } ],
+              "label" : "Image"
+            }
+          }
+        },
+        "label" : "Images"
+      }
+    }
+  }
+}

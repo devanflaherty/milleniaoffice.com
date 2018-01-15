@@ -111,7 +111,7 @@ export default {
     &__imageWrap {
       @include overlay();
       background-size: cover!important;
-      background-position: cover;
+      background-position: center bottom;
     }
     &__overlay {
       z-index: 2;
