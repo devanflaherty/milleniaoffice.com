@@ -15,7 +15,7 @@
     <transition name="hero-in" appear>
       <div v-if="thumbnail.large.url" class="homeHero__imageWrap rellax"
         :style="`background-image: url(${thumbnail.large.url})`"
-        data-rellax-speed="-4" data-rellax-percentage="0.5">
+        data-rellax-speed="-4">
       </div>
     </transition>
 
@@ -121,7 +121,7 @@ export default {
       height: 100%;
       display: flex;
       align-items: center;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.3);
       .container {
         position: relative;
         z-index: 5;
@@ -129,6 +129,9 @@ export default {
           color: $white;
           font-size: 4rem;
           line-height: 1.2;
+          @include mobile () {
+            font-size: 3.25rem;
+          }
           strong {
             color: $white;
           }
@@ -154,7 +157,8 @@ export default {
         width: 55px;
         opacity: 0.66;
         @include mobile() {
-          bottom: .33rem;
+          right: 1.5rem;
+          bottom: 0;
           height: 40px;
           width: 40px;
         }

@@ -227,7 +227,7 @@ module.exports = {
         if (to.hash) {
           // let hash = this.$route.hash
           // this.scrollTo(hash, 100)
-          position = { selector: to.hash };
+          // position = { selector: to.hash }
         }
         return position;
       }

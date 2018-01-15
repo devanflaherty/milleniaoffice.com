@@ -5,7 +5,7 @@
         :class="alignment"
         v-scroll-reveal="{distance: '100px', delay: '250'}">
         <div class="slice__quote__block__text" v-html="$prismic.asHtml(quote.quote)"></div>
-        <div class="slice__quote__block__author" v-html="$prismic.asHtml(quote.author)"></div>
+        <div class="slice__quote__block__author" v-html="$prismic.asHtml(quote.author)" v-if="quote.author[0]"></div>
       </blockquote>
     </div>
   </article>
@@ -36,14 +36,13 @@ export default {
 .slice__quote {
   &__block {
     &__text {
-      font-size: 2.5rem;
+      font-size: 1.65rem;
       font-weight: 300;
-      line-height: 1.25;
+      line-height: 1.2;
       letter-spacing: .25px;
-      margin: 2rem auto;
       @include mobile() {
         width: 90%;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
       strong {
         font-weight: 400;

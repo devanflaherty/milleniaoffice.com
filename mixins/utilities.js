@@ -38,5 +38,14 @@ Vue.mixin({
     toNewLines (str) {
       return str.split('\n').join('<br>')
     }
+  },
+  mounted () {
+    // this.$ss()
+
+    if (this.$route.hash) {
+      setTimeout(() => {
+        this.scrollTo(this.$route.hash, -100)
+      }, 1000)
+    }
   }
 })

@@ -28,9 +28,10 @@ Options
 */
 
 var defaultOptions = {
+  trigger: '.sweet-scroll',
   duration: 1000,
   easing: 'easeOutExpo',
-  offset: 0,
+  offset: -100,
   stopScroll: true,
   preventDefault: true
 }

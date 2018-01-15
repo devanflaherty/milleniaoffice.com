@@ -202,6 +202,11 @@ export default {
     @include mobile() {
       height: 95%;
       align-items: flex-end;
+      @media only screen and (orientation: landscape) {
+        padding: .5rem;
+        align-items: center;
+        height: 100%;
+      }
     }
     &__arrow {
       font-size: 2rem;

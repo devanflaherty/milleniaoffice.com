@@ -17,7 +17,7 @@
       <div id="navMenu" class="navbar-menu" v-if="breakpoint >= 3 && navVis">
         <div class="navbar-end" v-if="mobileNav || breakpoint > 2">
           <div class="navbar-item has-dropdown is-hoverable" v-for="(link, index) in menu" :key="index" v-if="menu">
-            <nuxt-link :to="navLink(link)" v-if="link.primary.link.type">
+            <nuxt-link :to="navLink(link)" v-if="link.primary.link.type" :class="{'sweet-scroll': link.primary.anchor}">
               {{$prismic.asText(link.primary.label)}}
             </nuxt-link>
             <a href="#" v-else>
@@ -98,6 +98,7 @@ export default {
   height: 100px;
   background: rgba($grey-light, 0.85);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   .navbar-brand {
     height: 100%;
     position: relative;

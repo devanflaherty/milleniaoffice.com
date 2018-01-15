@@ -7,10 +7,10 @@
             <div class="rich-text title" v-html="$prismic.asHtml(ie.exp_title)"
               v-scroll-reveal="{distance: '100px'}"></div>
 
-            <div class="rich-text"
-              v-if="$prismic.asText(ie.exp_description)"
-              v-html="$prismic.asHtml(ie.exp_description)"
-              v-scroll-reveal="{distance: '100px'}"></div>
+            <nuxt-link :to="$prismic.asLink(ie.exp_button_url)"
+              v-scroll-reveal="{distance: '100px'}">
+              {{ie.exp_button_label}}
+            </nuxt-link>
           </div>
         </header>
         
@@ -34,21 +34,15 @@
 <script>
 export default {
   props: ['slice'],
-  head () {
-    return {
-      script: [
-        {'src': '/pano/js/screenfull.min.js'}
-      ]
-    }
-  },
   data () {
     return {
       ie: this.slice.primary
     }
   },
   mounted () {
-    // let fullScreenScript = document.createElement('script')
-    // fullScreenScript.src = '/pano/js/screenfull.min.js'
+    let fullScreenScript = document.createElement('script')
+    fullScreenScript.src = '/pano/js/screenfull.min.js'
+    document.head.appendChild(fullScreenScript)
     // Write the correct ID of the iframe element,
     // as used in your html.
     /* eslint-disable */
@@ -124,9 +118,12 @@ export default {
 @import '~assets/styles/mixins';
 .slice {
   &__interactiveExperience {
-    padding: 4rem 0 6rem;
+    padding: 4rem 0 2rem;
     margin-top: 3rem;
     position: relative;
+    @include mobile () {
+      margin-top: 0;
+    }
     &__section {
       padding-top: 0;
       padding-bottom: 0;
@@ -134,6 +131,13 @@ export default {
         margin-bottom: 4rem;
         @include mobile() {
           margin-bottom: 2rem;
+        }
+        a {
+          color: $grey-dark;
+          transition: all 0.5s ease;
+          &:hover {
+            color: $black;
+          }
         }
         .contact {
           padding-top: 1.25rem; 

@@ -73,12 +73,6 @@ export default {
       this.$prismic.initApi().then((ctx) => {
         ctx.toolbar()
       })
-
-      if (this.$route.hash) {
-        setTimeout(() => {
-          this.scrollTo(this.$route.hash, -100)
-        }, 1000)
-      }
     }
   }
 }

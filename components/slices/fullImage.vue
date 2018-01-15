@@ -28,7 +28,10 @@ export default {
 .pull-to-footer {
   margin-bottom: -10%;
   @include mobile () {
-    margin-bottom: -25%;
+    margin-bottom: -35%;
+  }
+  @include tablet () {
+    margin-bottom: -20%;
   }
 }
 </style>

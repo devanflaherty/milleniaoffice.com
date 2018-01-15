@@ -84,9 +84,6 @@ export default {
     setTimeout(() => {
       this.ready = true
     }, 1000)
-  },
-  beforeDestroy () {
-    this.$refs.mySwiper.swiper.destroy()
   }
 }
 </script>
@@ -98,11 +95,12 @@ export default {
 .slice__campusSelector__gallery {
   padding-left: 0;
   padding-right: 0; 
-  min-height: 500px;
-  height: 85vh;
+  height: 400px;
   position: relative;
-  // overflow: hidden;
   width: 100%;
+  @include desktop () {
+    height: 500px;
+  }
 }
 
 .swiper-container, .swiper-slide {
