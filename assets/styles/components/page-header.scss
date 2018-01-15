@@ -11,6 +11,8 @@
     }
     p {
       width: 50%;
+      color: $white;
+      padding-top: 1.5rem;
       @include mobile () {
         width: 100%;
       }

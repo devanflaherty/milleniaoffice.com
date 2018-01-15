@@ -109,14 +109,14 @@
   </div>
 
   <div class="footer__companyInfo">
-    <nuxt-link class="footer__companyInfo__logo" to="http://www.chesnutproperties.com/">
+    <a class="footer__companyInfo__logo" target="_blank" rel="noopener" href="http://www.chesnutproperties.com/">
       <img src="~assets/img/chesnut.png" class="chesnut">
-    </nuxt-link>
-    <nuxt-link class="footer__companyInfo__logo" to="http://www.jll.com/">
+    </a>
+    <a class="footer__companyInfo__logo" target="_blank" rel="noopener" href="http://www.jll.com/">
       <img src="~assets/img/jll.png" class="jll">
-    </nuxt-link>
+    </a>
     <div class="footer__companyInfo__socialLinks">
-      <a v-for="(s, i) in social" :key="i" v-if="social.length > 0" :href="$prismic.asLink(s.social_url)" target="_blank"><i class="fa" :class="s.social_icon"></i></a>
+      <a v-for="(s, i) in social" :key="i" v-if="social.length > 0" :href="$prismic.asLink(s.social_url)" target="_blank" rel="noopener"><i class="fa" :class="s.social_icon"></i></a>
     </div>
     <p><small>Copyright @ 2017 Millenia Office / San Diego</small></p>
   </div>
