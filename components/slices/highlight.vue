@@ -14,12 +14,18 @@
         <div class="column is-7 slice__highlight__mediaColumn">
           <div class="slice__highlight__media"
             v-scroll-reveal="{duration: 2000, scale: 0, distance: '60px'}">
-            <template v-if="highlight.highlight_embed.html">
+            <template v-if="highlight.highlight_gallery.id">
+              <gallery :galleryID="highlight.highlight_gallery.id" />
+            </template>
+
+            <template v-else-if="highlight.highlight_embed.html">
               <videoEmbed :embed="highlight.highlight_embed" />
             </template>
+            
             <template v-else-if="highlight.highlight_caption.length > 0">
               <captionedImage :img="highlight.highlight_thumbnail" :caption="highlight.highlight_caption" />
             </template>
+            
             <template v-else>
               <img :src="highlight.highlight_thumbnail.url" />
             </template>

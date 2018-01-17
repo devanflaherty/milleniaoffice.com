@@ -280,6 +280,12 @@ Ideally let pano-container be in a full window width div so it can expand.
 	bottom:10px; right:10px;
 }
 
+@media only screen and (max-width: 770px) {
+	#pano-fullscreen-button {
+		display: none;
+	}	
+}
+
 /* Initial state: hide */
 #pano-welcome-container, #pano-ui-overlay {
 	display:none

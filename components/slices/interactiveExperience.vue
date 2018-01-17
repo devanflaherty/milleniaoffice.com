@@ -17,6 +17,14 @@
         <iframe id="pano-iframe" :src="ie.exp_iframe_url" 
           style="display: block;" allowfullscreen webkitallowfullscreen mozallowfullscreen
           v-scroll-reveal="{distance: '100px'}"></iframe>
+        <a v-if="breakpoint < 2" 
+          class="button is-small is-primary is-outlined is-marginless" href="/pano/pano.html" target="_blank" rel="noopener"
+          v-scroll-reveal="{distance: '60px', opacity: 0, delay: 500}">
+          <span class="icon">
+            <i class="fa fa-arrows-alt"></i>
+          </span>
+          <span>Experience this tour in full screen</span>
+        </a>
 
         <div class="columns">
           <div class="column">
@@ -167,10 +175,11 @@ export default {
       }
       #pano-iframe {
         margin-bottom: 2rem;
-        height: 600px;
+        height: 500px;
         width: 100%;
         @include mobile() {
-          height: 300px;
+          margin-bottom: 0;
+          height:400px;
         }
       }
       .button {

@@ -1,22 +1,22 @@
 {
   "name": "millenia",
-  "version": "0.0.1",
-  "description": "Nuxt.js + Δ micro project",
-  "author": "Devan Flaherty <devanflaherty@me.com>",
+  "version": "1.0.0",
+  "description": "Millenia Offices Prismic & Nuxt site",
+  "author": "Devan Flaherty <hello@devanflaherty.com>",
   "private": true,
   "scripts": {
     "dev": "backpack dev",
     "build": "nuxt build && backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "precommit": "npm run lint",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "heroku-postbuild": "npm run build"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "now": {
-    "alias": "milleniaoffices"
+    "alias": "milleniaoffice.com"
   },
   "dependencies": {
     "@nuxtjs/font-awesome": "^1.0.3",
+    "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/pwa": "^2.0.4",
     "axios": "^0.16.x",
     "babel-polyfill": "^6.26.0",

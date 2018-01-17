@@ -179,7 +179,7 @@ router.get('/users/:id', function (req, res, next) {
 var Jarvis = __webpack_require__(6);
 var UglifyJSWebpackPlugin = __webpack_require__(7);
 
-var url = 'https://milleniaoffice.co';
+var url = 'https://milleniaoffice.com';
 var title = 'Millenia Office';
 var desc = 'Millenia Office is an amenity rich cluster of three world-class campuses designed to facilitate a new paradigm of how and where people want to work.';
 var unfurl = url + '/unfurl.jpg';
@@ -206,9 +206,7 @@ module.exports = {
   ** Global CSS
   */
   css: [{ src: '~assets/styles/main.scss', lang: 'scss' }],
-  modules: ['@nuxtjs/pwa', '@nuxtjs/font-awesome'
-  // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
-  ],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/font-awesome', ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]],
   plugins: [{ src: '~plugins/vue-rellax', ssr: false }, { src: '~plugins/vue-lazyload', ssr: false }, { src: '~plugins/vue-youtube-embed', ssr: false }, { src: '~plugins/vue-sweet-scroll', ssr: false }, { src: '~plugins/vue-scroll-reveal', ssr: false }, { src: '~plugins/vue-swiper', ssr: false }, { src: '~plugins/vee-validate', ssr: false }, { src: '~mixins/utilities' }, { src: '~plugins/slices' }, { src: '~plugins/prismic' }],
   router: {
     middleware: ['toggleNav'],

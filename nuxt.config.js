@@ -1,7 +1,7 @@
 const Jarvis = require('webpack-jarvis')
 const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin')
 
-let url = 'https://milleniaoffice.co'
+let url = 'https://milleniaoffice.com'
 let title = 'Millenia Office'
 let desc = 'Millenia Office is an amenity rich cluster of three world-class campuses designed to facilitate a new paradigm of how and where people want to work.'
 let unfurl = `${url}/unfurl.jpg`
@@ -53,8 +53,8 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/font-awesome'
-    // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
+    '@nuxtjs/font-awesome',
+    ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
   plugins: [
     { src: `~plugins/vue-rellax`, ssr: false },
