@@ -53,8 +53,5 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.11.0"
-  },
-  "engines": {
-    "node": "8.9.4"
   }
 }
