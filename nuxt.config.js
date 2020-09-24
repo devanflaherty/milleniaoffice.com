@@ -53,8 +53,7 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/font-awesome',
-    '@nuxtjs/vercel-builder'
+    '@nuxtjs/font-awesome'
     // ['@nuxtjs/google-analytics', { ua: 'UA-108368424-1' }]
   ],
   plugins: [
